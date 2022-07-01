@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="${loader_range}"
+license="MIT"
+
+[[mods]]
+    modId="lore" 
+    version="${version}"
+    displayName="Lore"
+    authors="shroomdog27"
+    description='''
+    Adds commands to change display nbt data of items.
+    '''
+
+[[dependencies.lore]]
+    modId="forge"
+    mandatory=true
+    versionRange="${forge_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.lore]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="${minecraft_range}"
+    ordering="NONE"
+    side="BOTH"
