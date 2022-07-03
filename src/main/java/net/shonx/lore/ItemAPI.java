@@ -25,20 +25,15 @@
 package net.shonx.lore;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
 import net.shonx.lore.command.CommandExceptionTypes;
-import net.shonx.lore.json.TextEntry;
-import net.shonx.lore.json.TextEntryArrayDeseralizer;
-import net.shonx.lore.json.TextEntrySeralizer;
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.StringNBT;
 
 public class ItemAPI {
 
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(TextEntry.class, new TextEntrySeralizer()).registerTypeAdapter(TextEntry[].class, new TextEntryArrayDeseralizer()).create();
+    private static final Gson gson = new Gson();
 
     public static void clearLore(ItemStack item) throws CommandSyntaxException {
         NBTAPI.removeLore(item);
@@ -54,14 +49,14 @@ public class ItemAPI {
 
     public static void setLore(ItemStack item, String json) throws CommandSyntaxException {
         NBTAPI.removeLore(item);
-        TextEntry[] entries = getJSONEntries(json);
-        for (TextEntry entry : entries)
-            NBTAPI.addLore(item, StringNBT.valueOf(gson.toJson(entry)));
+        String[] entries = getJSONEntries(json);
+        for (String entry : entries)
+            NBTAPI.addLore(item, StringNBT.valueOf(entry));
     }
 
-    private static TextEntry[] getJSONEntries(String json) throws CommandSyntaxException {
+    private static String[] getJSONEntries(String json) throws CommandSyntaxException {
         try {
-            return gson.fromJson(json, TextEntry[].class);
+            return gson.fromJson(json, String[].class);
         } catch (Exception e) {
             throw CommandExceptionTypes.ERROR_INVALID_JSON.create(e.getMessage());
         }
