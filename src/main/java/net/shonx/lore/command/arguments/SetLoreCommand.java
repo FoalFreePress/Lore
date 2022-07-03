@@ -50,7 +50,7 @@ public class SetLoreCommand {
         ItemStack item = source.getPlayerOrException().getItemInHand(Hand.MAIN_HAND);
         if (item.isEmpty())
             throw CommandExceptionTypes.ERROR_NO_ITEM.create(source.getDisplayName());
-        ItemAPI.setLore(item, StringArgumentType.getString(ctx, "{nbt}").replaceAll(Pattern.quote("\\"), ""));
+        ItemAPI.setLore(item, StringArgumentType.getString(ctx, "{nbt}"));
         ctx.getSource().sendSuccess(new StringTextComponent("Added lore to item."), true);
         return 1;
     }
