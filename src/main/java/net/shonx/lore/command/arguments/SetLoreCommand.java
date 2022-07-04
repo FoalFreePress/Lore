@@ -24,8 +24,6 @@
 
 package net.shonx.lore.command.arguments;
 
-import java.util.regex.Pattern;
-
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;

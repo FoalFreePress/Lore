@@ -28,6 +28,7 @@ import com.google.gson.Gson;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
 import net.shonx.lore.command.CommandExceptionTypes;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.StringNBT;
 
